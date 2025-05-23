@@ -3,746 +3,445 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>日本のウイスキー樽産業：インタラクティブレポート</title>
+    <title>日本のウイスキー樽産業 インフォグラフィック</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <!-- Application Structure Plan: 
-        The SPA is structured around key themes derived from the report: "Current Situation & Challenges" (broken down by Makers, Materials, Coopers), "Supply-Demand Gap," "Business Opportunities," and "Data Insights." This thematic approach, rather than mirroring the report's linear chapter structure, allows users to navigate directly to areas of interest and explore interconnected concepts more intuitively. 
-        Key interactions include:
-        - Tabbed navigation for main sections.
-        - Click-to-expand details for complex information (e.g., company profiles, material challenges).
-        - Interactive charts (doughnut, bar, potentially line/radar if data allows) to visualize key statistics (e.g., maker distribution, cooper numbers, material price trends).
-        - Sortable/filterable tables for structured data (e.g., company lists, barrel types).
-        User flow is designed to first provide an overview (Introduction), then allow deep dives into specific challenge areas, understand the resulting supply-demand imbalance, explore potential business solutions, and finally, consult raw data through interactive tables and charts. This structure aims to enhance comprehension and facilitate synthesis of the report's findings by presenting information in digestible, interconnected modules.
-        -->
+        The infographic is structured as a single, scrollable page with distinct sections.
+        1. Title & Introduction: Hook with the importance of barrels (40-70% flavor).
+        2. Market Boom & Barrel Demand: Visualize new distillery trends and demand for diverse casks.
+        3. Supply-Side Challenges: Break down into Barrel Makers, Barrel Materials, and Coopers, each with specific data points and visualizations.
+            - Barrel Makers: Donut chart for supplier composition.
+            - Barrel Materials: Bar chart for key wood challenges, icon for Mizunara price.
+            - Coopers: Big number for total coopers, bar chart for affiliations, HTML/CSS flow chart for skill succession difficulties.
+        4. Hypothesis Check: Visually confirm user's hypotheses with checkmarks.
+        5. Business Opportunities: Use styled cards to present key opportunities (Regeneration, Domestic Wood, Cooper Training).
+        6. Strategic Recommendations: List key strategies for sustainable growth.
+        7. Conclusion: Summarize the industry's importance and potential.
+        This narrative flow aims to guide the user from the general market context to specific challenges, validate initial assumptions, and then present solutions and future outlook, all supported by data from the report.
+    -->
     <!-- Visualization & Content Choices:
-        - Report Info: Independent barrel makers are very few (Ariake Sangyo is the only one).
-          - Goal: Show the dominance of one independent maker vs. other supply forms.
-          - Viz/Presentation: Doughnut chart for "Barrel Maker Landscape" showing Ariake vs. In-house vs. Import vs. New Entrants. Clickable cards for major players.
-          - Interaction: Hover on chart segments for details. Click cards for expanded info.
-          - Justification: Quickly conveys market structure. Cards provide layered information.
-          - Library/Method: Chart.js for doughnut. HTML/CSS/JS for cards.
-        - Report Info: Cooper numbers are extremely low (50-70 total, Ariake has 19).
-          - Goal: Highlight the scarcity of coopers and concentration.
-          - Viz/Presentation: Bar chart for "Cooper Distribution" (Total vs. Ariake vs. Nikka, etc.). Text callouts for skill succession challenges.
-          - Interaction: Hover on bars for exact numbers.
-          - Justification: Clearly shows the small numbers and where they are.
-          - Library/Method: Chart.js for bar chart.
-        - Report Info: Mizunara wood is rare, expensive, and difficult to process. White oak is facing shortages.
-          - Goal: Explain challenges for key barrel materials.
-          - Viz/Presentation: Tabbed interface for "Barrel Materials" (Mizunara, White Oak, Other). Each tab shows characteristics, issues, and (if available) a simple trend indicator for price (e.g., upward arrow icon + text "Price Surging").
-          - Interaction: Click tabs to switch material.
-          - Justification: Organizes complex information cleanly.
-          - Library/Method: HTML/CSS/JS for tabs.
-        - Report Info: Tables 1-4 (Barrel Makers, Barrel Types, Barrel Materials, Cooper Numbers).
-          - Goal: Provide access to detailed structured data.
-          - Viz/Presentation: Interactive, sortable HTML tables in "Data Insights" section.
-          - Interaction: Column sorting. Potentially a simple text filter.
-          - Justification: Makes dense data more usable.
-          - Library/Method: HTML/CSS/JS for tables.
-        - Report Info: Business opportunities (Barrel Recycling, Domestic Wood Barrels, Cooper Training).
-          - Goal: Showcase potential new ventures.
-          - Viz/Presentation: Clickable cards for each opportunity, expanding to show details, market potential, and examples.
-          - Interaction: Click to expand/collapse.
-          - Justification: Highlights key takeaways in an engaging way.
-          - Library/Method: HTML/CSS/JS for cards.
-        - CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. All visualizations will be implemented using Chart.js (Canvas) or structured HTML/CSS/JS.
-        -->
+        - Overall Market Context:
+            - Data: Whisky flavor contribution from barrels (40-70%). Goal: Inform. Viz: Single Big Number (HTML). Justification: Strong opening impact.
+            - Data: New distillery trend (qualitative from report). Goal: Change. Viz: Line Chart (Chart.js, Canvas, illustrative). Justification: Show market dynamism.
+            - Data: Demand for diverse cask types. Goal: Compare. Viz: Donut Chart (Chart.js, Canvas). Justification: Show composition of demand.
+        - Barrel Maker Situation (Report Table 1):
+            - Data: Composition of domestic suppliers (Ariake, In-house, Importers, New Entrants). Goal: Compare. Viz: Donut Chart (Chart.js, Canvas). Justification: Clear market structure view.
+        - Barrel Material Crisis (Report Table 3):
+            - Data: Challenges for White Oak & Mizunara. Goal: Compare. Viz: Bar Chart (Chart.js, Canvas - qualitative challenge levels). Justification: Highlight key material issues.
+            - Data: Mizunara price soaring. Goal: Inform. Viz: Icon (Unicode) + Text. Justification: Quick visual emphasis.
+        - Cooper Shortage (Report Table 4):
+            - Data: Total cooper numbers (50-70). Goal: Inform. Viz: Single Big Number (HTML). Justification: Emphasize scarcity.
+            - Data: Cooper affiliations. Goal: Compare. Viz: Bar Chart (Chart.js, Canvas). Justification: Show distribution.
+            - Data: Skill succession difficulties. Goal: Organize. Viz: HTML/CSS Flow Chart. Justification: Illustrate process challenges.
+        - Hypothesis Validation:
+            - Data: User's hypotheses. Goal: Inform. Viz: Checkmark Icons (Unicode) + Text. Justification: Direct visual confirmation.
+        - Business Opportunities:
+            - Data: Barrel Regeneration, Domestic Wood Casks, Cooper Training. Goal: Organize/Inform. Viz: Styled Cards (HTML/CSS). Justification: Clear, digestible presentation of key opportunities.
+        - Strategic Recommendations:
+            - Data: Supply Chain, Tech Innovation, ESG, Public-Private Partnership. Goal: Organize. Viz: Styled List (HTML/CSS). Justification: Concise summary of strategies.
+        - CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. All charts are Chart.js (Canvas). Diagrams are HTML/CSS.
+    -->
     <style>
         body {
-            font-family: 'Yu Gothic', 'Meiryo', sans-serif;
-            background-color: #FDFBF6;
-            color: #333333;
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: #F8F9FA; /* Light Gray */
+            color: #2F4F4F; /* Dark Slate Gray */
         }
         .chart-container {
             position: relative;
             width: 100%;
-            max-width: 600px;
+            max-width: 500px; /* Max width for readability */
             margin-left: auto;
             margin-right: auto;
-            height: 300px;
-            max-height: 400px;
+            height: 300px; /* Base height */
+            max-height: 350px; /* Max height */
         }
-        @media (min-width: 768px) {
+        @media (min-width: 768px) { /* md breakpoint */
             .chart-container {
                 height: 350px;
+                max-height: 400px;
             }
         }
-        .tab-button.active {
-            border-color: #B08D57;
-            color: #B08D57;
-            font-weight: 600;
+        .flow-chart-step {
+            border: 2px solid #00BFFF; /* Deep Sky Blue */
+            background-color: #E0F7FA; /* Lighter blue */
         }
-        .accordion-content {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease-out;
+        .flow-chart-arrow {
+            color: #00BFFF; /* Deep Sky Blue */
         }
-        .accordion-button.open + .accordion-content {
-            max-height: 1000px; /* Adjust as needed */
+        .stat-card {
+            background-color: white;
+            border-left: 5px solid #FF8C00; /* Dark Orange */
         }
-        .nav-button.active {
-            background-color: #B08D57;
-            color: white;
+        .opportunity-card {
+            background-color: white;
+            border-top: 5px solid #32CD32; /* Lime Green */
         }
-        .sticky-nav {
-            position: -webkit-sticky; /* Safari */
-            position: sticky;
-            top: 0;
-            z-index: 50;
+        .section-title {
+            color: #FF8C00; /* Dark Orange */
+            border-bottom: 3px solid #FF8C00;
+        }
+        .highlight-number {
+            color: #FF8C00; /* Dark Orange */
+            font-weight: 700;
+            font-size: 3rem; /* Larger for impact */
+        }
+         h1, h2, h3 {
+            font-weight: 700;
         }
     </style>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
 </head>
-<body class="bg-[#FDFBF6] text-[#333333] leading-relaxed">
+<body class="antialiased">
 
-    <header class="bg-[#654321] text-white p-6 shadow-lg">
-        <div class="container mx-auto">
-            <h1 class="text-3xl font-bold text-center">日本のウイスキー樽産業：インタラクティブレポート</h1>
-            <p class="text-center mt-2 text-lg">現状の課題、需給バランス、そして未来のビジネス機会を探る</p>
+    <header class="bg-[#2F4F4F] text-white py-8 px-4 shadow-lg">
+        <div class="container mx-auto text-center">
+            <h1 class="text-4xl md:text-5xl font-bold">日本のウイスキー樽産業</h1>
+            <p class="text-xl md:text-2xl mt-2">成長を支える知られざる世界：現状・課題・未来への道筋</p>
         </div>
     </header>
 
-    <nav id="mainNav" class="sticky-nav bg-white shadow-md py-2">
-        <div class="container mx-auto flex flex-wrap justify-center space-x-2 sm:space-x-4">
-            <button data-target="intro" class="nav-button active text-sm sm:text-base px-3 py-2 rounded-md hover:bg-[#B08D57] hover:text-white transition-colors">概要</button>
-            <button data-target="situation" class="nav-button text-sm sm:text-base px-3 py-2 rounded-md hover:bg-[#B08D57] hover:text-white transition-colors">現状と課題</button>
-            <button data-target="supply_demand" class="nav-button text-sm sm:text-base px-3 py-2 rounded-md hover:bg-[#B08D57] hover:text-white transition-colors">需要と供給</button>
-            <button data-target="opportunities" class="nav-button text-sm sm:text-base px-3 py-2 rounded-md hover:bg-[#B08D57] hover:text-white transition-colors">ビジネス機会</button>
-            <button data-target="data_insights" class="nav-button text-sm sm:text-base px-3 py-2 rounded-md hover:bg-[#B08D57] hover:text-white transition-colors">データ集</button>
-        </div>
-    </nav>
+    <main class="container mx-auto p-4 md:p-8">
 
-    <main class="container mx-auto p-4 sm:p-6">
-        
-        <section id="intro" class="content-section mb-12">
-            <h2 class="text-2xl font-semibold text-[#B08D57] border-b-2 border-[#B08D57] pb-2 mb-6">はじめに：活況の裏に潜む樽の重要性</h2>
-            <p class="mb-4">日本のウイスキー市場は、国内外で高い評価を受け、目覚ましい成長を遂げています。この人気を背景に新しい蒸留所が次々と誕生し、ウイスキーの風味を決定づける「樽」の需要が急速に高まっています。ウイスキーの風味の実に40%～70%が樽熟成に由来すると言われるほど、樽は不可欠な存在です。</p>
-            <p class="mb-4">しかし、その裏側では、樽の供給体制が大きな課題に直面しています。本レポートでは、以下の仮説に着目し、日本のウイスキー樽産業の現状、課題、そしてそこから生まれるビジネス機会をインタラクティブに探ります。</p>
-            <div class="bg-amber-50 border-l-4 border-[#B08D57] p-4 rounded-md shadow">
-                <h3 class="text-lg font-semibold text-[#654321] mb-2">ユーザー提起の仮説：</h3>
-                <ul class="list-disc list-inside ml-4">
-                    <li>ウイスキー樽メーカーはあまりないのではないか？</li>
-                    <li>クーパー（樽職人）は技術の継承が難しく、全国でも人数が少なく、需要に対し供給が少ないのではないか？</li>
-                </ul>
-                <p class="mt-3">このアプリケーションを通じて、これらの仮説の妥当性をデータと共に検証し、業界の理解を深めていきましょう。</p>
+        <section class="mb-16 text-center">
+            <h2 class="text-3xl section-title inline-block px-4 pb-2 mb-8">樽：ウイスキーの魂を育む器</h2>
+            <p class="text-lg md:text-xl mb-6 max-w-3xl mx-auto">
+                ジャパニーズウイスキーの国際的な成功の陰には、その独特な風味を形成する「樽」の存在が不可欠です。ウイスキーの風味の実に<span class="font-bold text-[#FF8C00]">40%～70%</span>が樽熟成に由来すると言われ、樽は単なる容器ではなく、ウイスキーの個性を決定づける重要な要素なのです。しかし、この重要な樽を巡る産業は、今、大きな転換期を迎えています。
+            </p>
+            <div class="stat-card p-6 rounded-lg shadow-xl max-w-sm mx-auto">
+                <p class="text-xl text-[#2F4F4F] mb-2">ウイスキーの風味への貢献度</p>
+                <p class="highlight-number">40-70<span class="text-2xl">%</span></p>
             </div>
         </section>
 
-        <section id="situation" class="content-section mb-12 hidden">
-            <h2 class="text-2xl font-semibold text-[#B08D57] border-b-2 border-[#B08D57] pb-2 mb-6">現状と課題：樽を取り巻く複雑な実情</h2>
-            <p class="mb-6">日本のウイスキー樽産業は、樽メーカーの特異な状況、樽材調達の難しさ、そして専門技術を持つクーパーの不足という、三つの大きな課題を抱えています。これらが複雑に絡み合い、ウイスキーブームによる需要増に対応しきれない現状を生み出しています。各要素を詳しく見ていきましょう。</p>
-
-            <div class="mb-8">
-                <h3 class="text-xl font-semibold text-[#654321] mb-4">1. 樽メーカーの現状：限られた供給源</h3>
-                <p class="mb-4">国内で独立してウイスキー樽を専門に製造するメーカーは極めて少なく、これが供給のボトルネックの一つとなっています。一方で、大手ウイスキーメーカーによる自社生産や、他業種からの新規参入といった動きも見られ、市場構造は単純ではありません。</p>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
-                    <div>
-                        <div class="chart-container h-64 sm:h-80">
-                            <canvas id="barrelMakerChart"></canvas>
-                        </div>
-                        <p class="text-sm text-center mt-2">国内ウイスキー樽供給元の概況（イメージ）</p>
+        <section class="mb-16">
+            <h2 class="text-3xl section-title inline-block px-4 pb-2 mb-8">市場の活況と高まる樽需要</h2>
+            <p class="text-lg mb-8 max-w-3xl mx-auto">国内外でのジャパニーズウイスキー人気はとどまるところを知らず、新規蒸留所の設立が相次いでいます。これにより、ウイスキーの熟成に不可欠な樽、特に多様な風味を生み出すための様々な種類の樽への需要が急速に高まっています。</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div class="bg-white p-6 rounded-lg shadow-xl">
+                    <h3 class="text-xl font-bold text-[#00BFFF] mb-4 text-center">新規蒸留所設立の活発化 (イメージ)</h3>
+                    <div class="chart-container h-[250px] md:h-[300px]">
+                        <canvas id="newDistilleriesChart"></canvas>
                     </div>
-                    <div id="barrelMakersInfo" class="space-y-3">
-                        </div>
+                    <p class="text-sm text-center mt-2 text-gray-600">※実際のデータに基づくものではなく、近年の傾向を示すイメージです。</p>
                 </div>
-            </div>
-
-            <div class="mb-8">
-                <h3 class="text-xl font-semibold text-[#654321] mb-4">2. 樽材の課題：貴重な木材の確保難</h3>
-                <p class="mb-4">ウイスキー樽に不可欠なオーク材、特にアメリカンホワイトオークや国産のミズナラは、世界的な需要増、気候変動、伐採・流通体制の課題などから、供給が不安定で価格も高騰しています。これは樽のコストを押し上げ、安定供給を難しくしています。</p>
-                <div class="flex border-b border-gray-300 mb-4">
-                    <button class="tab-button active py-2 px-4 text-gray-700 hover:text-[#B08D57]" data-tab="whiteOak">ホワイトオーク</button>
-                    <button class="tab-button py-2 px-4 text-gray-700 hover:text-[#B08D57]" data-tab="mizunara">ミズナラ</button>
-                    <button class="tab-button py-2 px-4 text-gray-700 hover:text-[#B08D57]" data-tab="other 国産材">その他国産材</button>
-                </div>
-                <div id="whiteOakContent" class="tab-content">
-                    <h4 class="text-lg font-medium mb-2">アメリカンホワイトオーク</h4>
-                    <p class="mb-1"><span class="font-semibold">特徴：</span>バニラやココナッツのような甘い香り。タンニン量少なく耐水性が高い。加工しやすい。</p>
-                    <p><span class="font-semibold">課題：</span>世界的な需要増で丸太の入手が困難、価格高騰（2024年以降も高止まり予想）。気候変動による生育適域の減少懸念。</p>
-                </div>
-                <div id="mizunaraContent" class="tab-content hidden">
-                    <h4 class="text-lg font-medium mb-2">ミズナラ（ジャパニーズオーク）</h4>
-                    <p class="mb-1"><span class="font-semibold">特徴：</span>白檀や伽羅のようなオリエンタルな香り。長期熟成向き。</p>
-                    <p><span class="font-semibold">課題：</span>希少性が高く、価格は高騰の一途（2022年度 北海道産丸太平均価格が過去最高）。加工が非常に難しく水漏れしやすい（通常の樽の倍近い製造日数も）。良材は枯渇しつつあり、伐採される丸太の直径も小型化。国内の伐採・流通体制の未整備、林業の採算性問題も深刻。</p>
-                </div>
-                <div id="other 国産材Content" class="tab-content hidden">
-                    <h4 class="text-lg font-medium mb-2">その他国産材（桜、栗、杉など）</h4>
-                    <p class="mb-1"><span class="font-semibold">特徴：</span>桜（桜餅のような香り）、栗（独特の風味）など、多様な風味の可能性。</p>
-                    <p><span class="font-semibold">課題：</span>流通量が少なく、品質の安定性確保が課題。樽材としての特性研究や加工技術開発が進行中。</p>
-                </div>
-            </div>
-
-            <div>
-                <h3 class="text-xl font-semibold text-[#654321] mb-4">3. クーパー（樽職人）の現状：技術継承の危機</h3>
-                <p class="mb-4">ウイスキー樽の製造や修理には高度な専門技術を持つクーパー（樽職人）が不可欠ですが、日本国内のクーパーの総数は50～70名程度と極めて少なく、その多くが特定の企業に集中しています。高齢化も進み、OJT中心の育成や厳しい労働環境から、技術継承は深刻な課題となっています。</p>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
-                    <div>
-                        <div class="chart-container h-64 sm:h-80">
-                            <canvas id="cooperDistributionChart"></canvas>
-                        </div>
-                         <p class="text-sm text-center mt-2">国内クーパーの概数と所属状況（推定）</p>
+                <div class="bg-white p-6 rounded-lg shadow-xl">
+                    <h3 class="text-xl font-bold text-[#00BFFF] mb-4 text-center">多様な樽への需要 (構成イメージ)</h3>
+                    <div class="chart-container h-[250px] md:h-[300px]">
+                        <canvas id="caskDemandChart"></canvas>
                     </div>
-                    <div class="bg-stone-100 p-4 rounded-lg shadow">
-                        <h4 class="text-lg font-medium mb-2 text-[#654321]">技術継承の主な壁：</h4>
-                        <ul class="list-disc list-inside space-y-1">
-                            <li><span class="font-semibold">暗黙知への依存：</span>言語化・マニュアル化が難しい「感覚」や「経験」に頼る部分が大きい。</li>
-                            <li><span class="font-semibold">OJT中心の育成：</span>一人前になるまで長期間（数年～10年以上）を要し、個々の樽の特性に合わせた対応力が求められる。</li>
-                            <li><span class="font-semibold">労働環境：</span>体力的に厳しい力仕事であり、「3K（きつい、汚い、危険）」と称される側面も。</li>
-                            <li><span class="font-semibold">高齢化と後継者不足：</span>熟練職人の引退が進む一方、新規参入者が少ない。</li>
-                        </ul>
-                    </div>
+                    <p class="text-sm text-center mt-2 text-gray-600">※市場のニーズの多様化を示すイメージです。</p>
                 </div>
             </div>
         </section>
 
-        <section id="supply_demand" class="content-section mb-12 hidden">
-            <h2 class="text-2xl font-semibold text-[#B08D57] border-b-2 border-[#B08D57] pb-2 mb-6">需要と供給のギャップ：タイトな樽事情</h2>
-            <p class="mb-6">ジャパニーズウイスキーの国内外での需要急増と、それに伴う新規蒸留所の相次ぐ設立は、ウイスキー樽の需要をかつてないほど押し上げています。しかし、前述の通り、樽メーカーの限定性、樽材調達の困難さ、クーパー不足といった供給側の制約により、需要に対して供給が追いついていないのが現状です。「世界的な樽不足」とも言われるこの状況は、特にバーボン樽などの輸入樽価格の高騰にも繋がっています。</p>
+        <section class="mb-16">
+            <h2 class="text-3xl section-title inline-block px-4 pb-2 mb-10">供給側の課題：ボトルネックはここにある</h2>
             
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
-                <div class="bg-green-50 p-6 rounded-lg shadow-md border-l-4 border-green-500">
-                    <h3 class="text-xl font-semibold text-green-700 mb-3">旺盛な需要サイド <span class="text-2xl">📈</span></h3>
-                    <ul class="list-disc list-inside space-y-2">
-                        <li>ジャパニーズウイスキーの国際的評価と人気継続。</li>
-                        <li>国内外での市場拡大と販売量増加。</li>
-                        <li>新規クラフト蒸留所の設立ラッシュ。</li>
-                        <li>多様な風味を求めるための多種多様な樽へのニーズ増（シェリー樽、ワイン樽、ミズナラ樽など）。</li>
-                        <li>「樽買い」オーナー制度など、個人投資家や愛好家からの需要も。</li>
-                    </ul>
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
+                <div class="bg-white p-6 rounded-lg shadow-xl">
+                    <h3 class="text-2xl font-bold text-[#FF8C00] mb-4">1. 樽メーカーの現状</h3>
+                    <p class="mb-4">国内の独立系洋樽メーカーは<span class="font-bold">有明産業1社のみ</span>。大手による自社製造や新規参入も見られますが、供給源は限定的です。</p>
+                    <div class="chart-container h-[280px]">
+                        <canvas id="barrelSupplierChart"></canvas>
+                    </div>
+                    <p class="text-sm text-center mt-2 text-gray-600">国内樽供給元の構成（イメージ）</p>
                 </div>
-                <div class="bg-red-50 p-6 rounded-lg shadow-md border-l-4 border-red-500">
-                    <h3 class="text-xl font-semibold text-red-700 mb-3">制約のある供給サイド <span class="text-2xl">📉</span></h3>
-                    <ul class="list-disc list-inside space-y-2">
-                        <li>独立系樽メーカーは国内1社（有明産業）のみ。</li>
-                        <li>クーパー（樽職人）は全国で約50～70名と極少。</li>
-                        <li>樽材（特にホワイトオーク、ミズナラ）の不足と価格高騰。</li>
-                        <li>クーパーの技術継承の困難さと高齢化。</li>
-                        <li>新樽製造能力の限界。</li>
-                    </ul>
+
+                <div class="bg-white p-6 rounded-lg shadow-xl">
+                    <h3 class="text-2xl font-bold text-[#FF8C00] mb-4">2. 樽材の危機</h3>
+                    <p class="mb-4">ホワイトオークや国産ミズナラなどの主要樽材は、供給不安定と価格高騰に直面。特にミズナラは<span class="font-bold">「森の宝石」</span>とも呼ばれる希少材です。</p>
+                    <div class="chart-container h-[280px]">
+                        <canvas id="barrelMaterialChart"></canvas>
+                    </div>
+                    <p class="text-sm text-center mt-2 text-gray-600">主要樽材の課題レベル（イメージ）</p>
+                    <p class="text-center mt-4 text-lg"><span class="text-3xl">🌲</span> ミズナラ材価格：<span class="font-bold text-red-600">高騰中 📈</span></p>
+                </div>
+
+                <div class="bg-white p-6 rounded-lg shadow-xl">
+                    <h3 class="text-2xl font-bold text-[#FF8C00] mb-4">3. クーパー不足と技術継承</h3>
+                    <p class="mb-2">国内の樽職人（クーパー）は<span class="font-bold">約50～70名</span>と極めて少数。高齢化とOJT中心の育成により、技術継承が深刻な課題です。</p>
+                    <div class="stat-card p-4 rounded-lg shadow-md text-center mb-4 max-w-xs mx-auto">
+                        <p class="text-lg text-[#2F4F4F]">国内クーパー総数</p>
+                        <p class="text-4xl font-bold text-[#FF8C00]">約50-70<span class="text-xl">名</span></p>
+                    </div>
+                    <div class="chart-container h-[200px] mb-1">
+                         <canvas id="cooperAffiliationChart"></canvas>
+                    </div>
+                    <p class="text-sm text-center mt-0 mb-3 text-gray-600">クーパー所属先の分布（推定）</p>
                 </div>
             </div>
-
-            <div class="bg-white p-6 rounded-lg shadow-lg">
-                <h3 class="text-xl font-semibold text-[#654321] mb-3">仮説検証：「需要に対し供給が少ない」は妥当</h3>
-                <p class="mb-4">上記の状況から、ユーザーの仮説である「需要に対し供給が少ない」は明確に裏付けられます。この需給ギャップは、新樽価格の高騰、中古樽市場の活性化、そして樽再生技術への注目といった現象を引き起こしています。</p>
-                <p>このギャップを埋めるための取り組みとして、使用済み樽のリペア・リメイク・リチャー（再活性化）事業や、国産材を活用した樽製造、輸入樽の確保などが進められていますが、根本的な解決には至っていません。この状況が、次項で述べる新たなビジネス機会を生み出す土壌ともなっています。</p>
+            
+            <div class="bg-white p-6 rounded-lg shadow-xl mt-8">
+                <h3 class="text-xl font-bold text-[#00BFFF] mb-6 text-center">クーパー技術継承の難しさ：その構造</h3>
+                <div class="flex flex-col md:flex-row justify-around items-center space-y-4 md:space-y-0 md:space-x-4">
+                    <div class="flow-chart-step p-3 rounded-lg text-center shadow-md w-full md:w-1/4">
+                        <p class="font-semibold">暗黙知への依存</p>
+                        <p class="text-sm">(感覚・経験)</p>
+                    </div>
+                    <div class="flow-chart-arrow text-2xl font-bold hidden md:block">&rarr;</div>
+                    <div class="flow-chart-arrow text-2xl font-bold md:hidden mx-auto">&darr;</div>
+                    <div class="flow-chart-step p-3 rounded-lg text-center shadow-md w-full md:w-1/4">
+                        <p class="font-semibold">OJT中心の育成</p>
+                        <p class="text-sm">(数年～10年以上)</p>
+                    </div>
+                    <div class="flow-chart-arrow text-2xl font-bold hidden md:block">&rarr;</div>
+                     <div class="flow-chart-arrow text-2xl font-bold md:hidden mx-auto">&darr;</div>
+                    <div class="flow-chart-step p-3 rounded-lg text-center shadow-md w-full md:w-1/4">
+                        <p class="font-semibold">厳しい労働環境</p>
+                        <p class="text-sm">(3Kの側面も)</p>
+                    </div>
+                    <div class="flow-chart-arrow text-2xl font-bold hidden md:block">&rarr;</div>
+                     <div class="flow-chart-arrow text-2xl font-bold md:hidden mx-auto">&darr;</div>
+                    <div class="flow-chart-step p-3 rounded-lg text-center shadow-md w-full md:w-1/4">
+                        <p class="font-semibold">後継者不足</p>
+                        <p class="text-sm">(高齢化)</p>
+                    </div>
+                </div>
+                <p class="text-center mt-6 text-gray-700">これらの要因が複合的に絡み合い、技術継承を一層困難にしています。</p>
             </div>
         </section>
 
-        <section id="opportunities" class="content-section mb-12 hidden">
-            <h2 class="text-2xl font-semibold text-[#B08D57] border-b-2 border-[#B08D57] pb-2 mb-6">ビジネス機会：課題の先に広がる可能性</h2>
-            <p class="mb-6">日本のウイスキー樽産業が直面する数々の課題は、裏を返せば新たなビジネスチャンスの宝庫でもあります。供給不足、技術継承の困難さ、国産材への注目といった背景から、以下のような有望な事業領域が浮かび上がっています。</p>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
-                    <h3 class="text-xl font-semibold text-[#B08D57] mb-3">樽再生・リメイク事業 <span class="text-2xl">♻️</span></h3>
-                    <p class="mb-3">使用済み樽の熟成機能を回復させるリペア、リメイク、リチャー（再焼き付け）、リトースト技術。新樽不足と価格高騰を背景に需要は非常に高い。</p>
-                    <button class="accordion-button w-full text-left font-semibold text-[#654321] py-2 flex justify-between items-center">
-                        <span>詳細を見る</span> <span class="arrow transform transition-transform">▼</span>
-                    </button>
-                    <div class="accordion-content mt-2 text-sm">
-                        <p><strong>市場性：</strong>既存樽の有効活用、コスト削減、サステナビリティへの貢献。</p>
-                        <p><strong>キープレイヤー例：</strong>有明産業、若鶴酒造 (Re:COOPERAGE)。</p>
-                        <p><strong>ポイント：</strong>高度な再生技術、効率化（例：若鶴酒造の自動樽削り機「バレルロール」）、輸送コストを考慮した立地。</p>
-                    </div>
-                </div>
+        <section class="mb-16 bg-amber-50 p-8 rounded-lg shadow-xl border-l-8 border-[#FF8C00]">
+            <h2 class="text-3xl section-title inline-block px-4 pb-2 mb-8">仮説検証：ユーザーの視点から</h2>
+            <p class="text-lg mb-6">当初の仮説「ウィスキー樽メーカーはあまりない、クーパーは技術の継承が難しく全国でも人数が少なく需要に対し供給が少ない」は、本調査結果から概ね妥当であると判断されます。</p>
+            <ul class="space-y-3 text-xl">
+                <li class="flex items-center"><span class="text-3xl text-green-500 mr-3">✅</span> 独立系樽メーカーは極めて限定的。</li>
+                <li class="flex items-center"><span class="text-3xl text-green-500 mr-3">✅</span> クーパーの絶対数は少なく、技術継承も困難。</li>
+                <li class="flex items-center"><span class="text-3xl text-green-500 mr-3">✅</span> ウイスキーブームによる需要増に対し、供給体制が追いついていない。</li>
+            </ul>
+        </section>
 
-                <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
-                    <h3 class="text-xl font-semibold text-[#B08D57] mb-3">国産材新樽製造 <span class="text-2xl">🌲</span></h3>
-                    <p class="mb-3">ミズナラ、桜、栗、杉など、日本固有の木材を活用した高付加価値な新樽の製造。ジャパニーズウイスキーの独自性を追求する動きと連動。</p>
-                     <button class="accordion-button w-full text-left font-semibold text-[#654321] py-2 flex justify-between items-center">
-                        <span>詳細を見る</span> <span class="arrow transform transition-transform">▼</span>
-                    </button>
-                    <div class="accordion-content mt-2 text-sm">
-                        <p><strong>市場性：</strong>ミズナラ樽の世界的な人気、多様な風味へのニーズ。</p>
-                        <p><strong>キープレイヤー例：</strong>有明産業、若鶴酒造（三四郎樽）、日進木工。</p>
-                        <p><strong>ポイント：</strong>品質とトレーサビリティ、林業家や木工職人との連携（農商工連携モデル）、安定的な材の調達ルート確立。</p>
-                    </div>
+        <section class="mb-16">
+            <h2 class="text-3xl section-title inline-block px-4 pb-2 mb-8">ビジネス機会：課題の先に光る未来</h2>
+            <p class="text-lg mb-8 max-w-3xl mx-auto">これらの課題は、同時に新たなビジネスチャンスを生み出しています。特に以下の分野での成長が期待されます。</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="opportunity-card p-6 rounded-lg shadow-xl text-center hover:shadow-2xl transition-shadow">
+                    <p class="text-5xl mb-4">♻️</p>
+                    <h3 class="text-2xl font-bold text-[#32CD32] mb-3">樽再生・リメイク事業</h3>
+                    <p>使用済み樽の価値を再生。新樽不足とコスト高騰に対応する有効な一手。</p>
+                    <p class="mt-2 text-sm font-semibold">キープレイヤー例：有明産業, Re:COOPERAGE</p>
                 </div>
-
-                <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
-                    <h3 class="text-xl font-semibold text-[#B08D57] mb-3">樽職人（クーパー）育成事業 <span class="text-2xl">🛠️</span></h3>
-                    <p class="mb-3">深刻なクーパー不足と技術継承の課題に対応するため、専門的な育成プログラムや教育機関の設立、コンサルティングサービス。</p>
-                     <button class="accordion-button w-full text-left font-semibold text-[#654321] py-2 flex justify-between items-center">
-                        <span>詳細を見る</span> <span class="arrow transform transition-transform">▼</span>
-                    </button>
-                    <div class="accordion-content mt-2 text-sm">
-                        <p><strong>市場性：</strong>業界全体の喫緊の課題であり、人材供給への貢献は大きい。</p>
-                        <p><strong>キープレイヤー例：：</strong>有明産業、若鶴酒造 (Re:COOPERAGE)。</p>
-                        <p><strong>ポイント：</strong>OJTの効率化、技術の形式知化、労働環境改善提案、公的支援活用の模索。</p>
-                    </div>
+                <div class="opportunity-card p-6 rounded-lg shadow-xl text-center hover:shadow-2xl transition-shadow">
+                    <p class="text-5xl mb-4">🌲</p>
+                    <h3 class="text-2xl font-bold text-[#32CD32] mb-3">国産材新樽製造</h3>
+                    <p>ミズナラなど日本固有の木材を活用した高付加価値樽。独自性の追求。</p>
+                    <p class="mt-2 text-sm font-semibold">キープレイヤー例：有明産業, 若鶴酒造, 日進木工</p>
+                </div>
+                <div class="opportunity-card p-6 rounded-lg shadow-xl text-center hover:shadow-2xl transition-shadow">
+                    <p class="text-5xl mb-4">🛠️</p>
+                    <h3 class="text-2xl font-bold text-[#32CD32] mb-3">樽職人育成事業</h3>
+                    <p>深刻なクーパー不足を解消。専門教育やコンサルティングの可能性。</p>
+                     <p class="mt-2 text-sm font-semibold">キープレイヤー例：有明産業, 若鶴酒造</p>
                 </div>
             </div>
-            <div class="mt-8 bg-stone-100 p-6 rounded-lg shadow">
-                <h4 class="text-lg font-semibold text-[#654321] mb-3">その他戦略的提言：</h4>
-                <ul class="list-disc list-inside space-y-2">
-                    <li><strong>サプライチェーン強靭化：</strong>多様なオーク材調達ルートの確保、林業・木材加工業者との連携強化（農商工連携）。</li>
-                    <li><strong>技術革新：</strong>樽製造・再生プロセスにおける自動化・デジタル化技術への投資。</li>
-                    <li><strong>ESG経営：</strong>環境負荷の低い製造プロセス、再生可能資源の活用、持続可能な森林管理への貢献。</li>
+        </section>
+
+        <section class="mb-16">
+            <h2 class="text-3xl section-title inline-block px-4 pb-2 mb-8">戦略的提言：持続可能な成長のために</h2>
+            <p class="text-lg mb-8 max-w-3xl mx-auto">日本のウイスキー樽産業が持続的に成長するためには、以下の戦略的取り組みが重要となります。</p>
+            <div class="bg-white p-8 rounded-lg shadow-xl">
+                <ul class="space-y-4 text-lg">
+                    <li class="p-4 bg-blue-50 rounded-md shadow-sm border-l-4 border-[#00BFFF]"><strong class="text-[#00BFFF]">サプライチェーン強靭化：</strong>多様な木材調達ルートの確保、林業・木材加工業者との連携（農商工連携）。</li>
+                    <li class="p-4 bg-blue-50 rounded-md shadow-sm border-l-4 border-[#00BFFF]"><strong class="text-[#00BFFF]">技術革新の推進：</strong>樽製造・再生プロセスにおける自動化・デジタル化技術への投資。</li>
+                    <li class="p-4 bg-blue-50 rounded-md shadow-sm border-l-4 border-[#00BFFF]"><strong class="text-[#00BFFF]">ESG経営の実践：</strong>環境負荷低減、再生可能資源活用、持続可能な森林管理への貢献。</li>
+                    <li class="p-4 bg-blue-50 rounded-md shadow-sm border-l-4 border-[#00BFFF]"><strong class="text-[#00BFFF]">官民連携の強化：</strong>業界団体を通じた政策提言、公的支援の戦略的活用。</li>
                 </ul>
             </div>
         </section>
 
-        <section id="data_insights" class="content-section mb-12 hidden">
-            <h2 class="text-2xl font-semibold text-[#B08D57] border-b-2 border-[#B08D57] pb-2 mb-6">データで見る樽産業：主要な数値と一覧</h2>
-            <p class="mb-6">このセクションでは、レポート内で言及されている主要な数値データや表をまとめて提示します。インタラクティブな操作を通じて、日本のウイスキー樽産業に関する具体的な情報をより深く掘り下げることができます。</p>
-
-            <div class="mb-8">
-                <h3 class="text-xl font-semibold text-[#654321] mb-4">有明産業の樽生産状況</h3>
-                <div class="chart-container h-72 sm:h-80">
-                    <canvas id="ariakeProductionChart"></canvas>
-                </div>
-                <p class="text-sm text-center mt-2">有明産業の年間樽生産約4500丁の内訳（9割焼酎向け、1割ウイスキーメーカー向け）</p>
-            </div>
-            
-            <div class="mb-8 overflow-x-auto">
-                <h3 class="text-xl font-semibold text-[#654321] mb-4">表1：日本の主要ウイスキー樽製造・供給企業一覧</h3>
-                <p class="mb-2 text-sm">列名をクリックするとソートできます。</p>
-                <table id="table1" class="min-w-full bg-white border border-gray-300 shadow-sm rounded-lg">
-                    <thead class="bg-stone-100">
-                        <tr>
-                            <th class="p-3 border-b cursor-pointer hover:bg-stone-200" data-sort="name">企業名</th>
-                            <th class="p-3 border-b cursor-pointer hover:bg-stone-200" data-sort="type">事業形態</th>
-                            <th class="p-3 border-b cursor-pointer hover:bg-stone-200" data-sort="material">主な樽の種類/材</th>
-                            <th class="p-3 border-b cursor-pointer hover:bg-stone-200" data-sort="production">年間生産数（判明分）</th>
-                            <th class="p-3 border-b" data-sort="notes">特記事項</th>
-                        </tr>
-                    </thead>
-                    <tbody></tbody>
-                </table>
-            </div>
-
-            <div class="mb-8 overflow-x-auto">
-                <h3 class="text-xl font-semibold text-[#654321] mb-4">表2：ウイスキー樽の主な種類と容量</h3>
-                 <p class="mb-2 text-sm">列名をクリックするとソートできます。</p>
-                <table id="table2" class="min-w-full bg-white border border-gray-300 shadow-sm rounded-lg">
-                    <thead class="bg-stone-100">
-                        <tr>
-                            <th class="p-3 border-b cursor-pointer hover:bg-stone-200" data-sort="type">種類</th>
-                            <th class="p-3 border-b cursor-pointer hover:bg-stone-200" data-sort="capacity">容量（リットル）</th>
-                            <th class="p-3 border-b" data-sort="usage">主な用途/特徴</th>
-                        </tr>
-                    </thead>
-                    <tbody></tbody>
-                </table>
-            </div>
-             <div class="mb-8 overflow-x-auto">
-                <h3 class="text-xl font-semibold text-[#654321] mb-4">表3：ウイスキー樽材の種類と特徴・課題</h3>
-                <p class="mb-2 text-sm">列名をクリックするとソートできます。</p>
-                <table id="table3" class="min-w-full bg-white border border-gray-300 shadow-sm rounded-lg">
-                    <thead class="bg-stone-100">
-                        <tr>
-                            <th class="p-3 border-b cursor-pointer hover:bg-stone-200" data-sort="material">樽材の種類</th>
-                            <th class="p-3 border-b cursor-pointer hover:bg-stone-200" data-sort="origin">主な産地</th>
-                            <th class="p-3 border-b" data-sort="features">特徴</th>
-                            <th class="p-3 border-b" data-sort="issues">調達・供給に関する課題</th>
-                        </tr>
-                    </thead>
-                    <tbody></tbody>
-                </table>
-            </div>
-            <div class="mb-8 overflow-x-auto">
-                <h3 class="text-xl font-semibold text-[#654321] mb-4">表4：日本国内のクーパー（樽職人）数と所属状況</h3>
-                <p class="mb-2 text-sm">列名をクリックするとソートできます。</p>
-                <table id="table4" class="min-w-full bg-white border border-gray-300 shadow-sm rounded-lg">
-                    <thead class="bg-stone-100">
-                        <tr>
-                            <th class="p-3 border-b cursor-pointer hover:bg-stone-200" data-sort="company">企業/組織名</th>
-                            <th class="p-3 border-b cursor-pointer hover:bg-stone-200" data-sort="coopers">所属クーパー数（判明分）</th>
-                            <th class="p-3 border-b" data-sort="notes">特記事項</th>
-                        </tr>
-                    </thead>
-                    <tbody></tbody>
-                </table>
-            </div>
+        <section class="text-center bg-[#2F4F4F] text-white py-12 px-4 rounded-lg shadow-xl">
+            <h2 class="text-3xl font-bold mb-6">結論：樽産業は日本のウイスキー文化を支える礎</h2>
+            <p class="text-lg md:text-xl mb-4 max-w-3xl mx-auto">日本のウイスキー樽産業は、多くの課題を抱えつつも、大きな成長の可能性を秘めています。樽メーカー、クーパー、関連事業者が連携し、革新的な取り組みを進めることで、ジャパニーズウイスキーの輝かしい未来を支えることができるでしょう。</p>
+            <p class="text-lg md:text-xl max-w-3xl mx-auto">この分野への理解と戦略的な投資は、単なるビジネスに留まらず、日本の豊かな酒文化と林業の活性化にも繋がる重要な一歩です。</p>
         </section>
     </main>
 
-    <footer class="bg-[#654321] text-white text-center p-4 mt-12">
-        <p class="text-sm">&copy; 2024 ウイスキー樽産業インタラクティブレポート. 元情報：日本のウイスキー樽産業に関する調査レポート。</p>
+    <footer class="text-center py-8 mt-12 border-t border-gray-300">
+        <p class="text-sm text-gray-600">&copy; 2024 日本のウイスキー樽産業インフォグラフィック. </p>
+        <p class="text-xs text-gray-500 mt-1">情報源：ウイスキー樽ビジネス調査計画レポート (`8c375a50-dfba-488f-93c1-285e9086f451`)</p>
     </footer>
 
     <script>
-        const barrelMakerChartCtx = document.getElementById('barrelMakerChart').getContext('2d');
-        const cooperDistributionChartCtx = document.getElementById('cooperDistributionChart').getContext('2d');
-        const ariakeProductionChartCtx = document.getElementById('ariakeProductionChart').getContext('2d');
+        const chartColors = {
+            orange: '#FF8C00',
+            blue: '#00BFFF',
+            green: '#32CD32',
+            gold: '#FFD700',
+            steelBlue: '#4682B4',
+            lightGray: '#D3D3D3'
+        };
 
-        const commonChartOptions = (titleText) => ({
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: {
-                legend: {
-                    position: 'bottom',
+        function wrapLabels(label, maxWidth = 16) {
+            if (typeof label !== 'string') return label;
+            if (label.length <= maxWidth) return label;
+
+            const words = label.split(' ');
+            const lines = [];
+            let currentLine = '';
+            for (const word of words) {
+                if ((currentLine + word).length > maxWidth && currentLine.length > 0) {
+                    lines.push(currentLine.trim());
+                    currentLine = '';
+                }
+                currentLine += word + ' ';
+            }
+            lines.push(currentLine.trim());
+            return lines;
+        }
+        
+        const commonTooltipTitleCallback = function(tooltipItems) {
+            const item = tooltipItems[0];
+            let label = item.chart.data.labels[item.dataIndex];
+            if (Array.isArray(label)) {
+                return label.join(' ');
+            }
+            return label;
+        };
+
+        // New Distilleries Chart (Illustrative Line Chart)
+        const newDistilleriesCtx = document.getElementById('newDistilleriesChart')?.getContext('2d');
+        if (newDistilleriesCtx) {
+            new Chart(newDistilleriesCtx, {
+                type: 'line',
+                data: {
+                    labels: ['2018年頃', '2020年頃', '2022年頃', '2024年予測'],
+                    datasets: [{
+                        label: '新規蒸留所設立の動き (イメージ)',
+                        data: [10, 15, 25, 35], // Mock data representing an upward trend
+                        borderColor: chartColors.blue,
+                        backgroundColor: 'rgba(0, 191, 255, 0.1)',
+                        fill: true,
+                        tension: 0.3
+                    }]
                 },
-                title: {
-                    display: true,
-                    text: titleText,
-                    font: { size: 16 }
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: { callbacks: { title: commonTooltipTitleCallback } }
+                    },
+                    scales: { y: { beginAtZero: true, ticks: { precision: 0 } } }
+                }
+            });
+        }
+
+        // Cask Demand Chart (Donut Chart)
+        const caskDemandCtx = document.getElementById('caskDemandChart')?.getContext('2d');
+        if (caskDemandCtx) {
+            new Chart(caskDemandCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: [wrapLabels('バーボン樽'), wrapLabels('シェリー樽'), wrapLabels('ミズナラ樽'), wrapLabels('ワイン樽'), wrapLabels('その他')],
+                    datasets: [{
+                        label: '樽の種類別需要 (イメージ)',
+                        data: [40, 25, 15, 10, 10], // Mock percentages
+                        backgroundColor: [chartColors.orange, chartColors.blue, chartColors.green, chartColors.gold, chartColors.steelBlue],
+                        borderColor: '#F8F9FA',
+                        borderWidth: 2
+                    }]
                 },
-                tooltip: {
-                    callbacks: {
-                        label: function(context) {
-                            let label = context.dataset.label || '';
-                            if (label) {
-                                label += ': ';
-                            }
-                            if (context.parsed.y !== null && context.chart.config.type !== 'doughnut' && context.chart.config.type !== 'pie') {
-                                label += context.parsed.y + '名';
-                            } else if (context.parsed !== null && (context.chart.config.type === 'doughnut' || context.chart.config.type === 'pie')) {
-                                label += context.parsed;
-                                if (context.dataset.dataUnit) label += context.dataset.dataUnit;
-                            }
-                            
-                            const total = context.dataset.data.reduce((acc, val) => acc + val, 0);
-                            const percentage = ((context.parsed.y || context.parsed) / total * 100).toFixed(1) + '%';
-                            if (context.chart.config.type === 'doughnut' || context.chart.config.type === 'pie') {
-                                label += ` (${percentage})`;
-                            }
-                            
-                            // Label wrapping
-                            const maxLabelWidth = 16;
-                            let wrappedLabel = '';
-                            let currentLine = '';
-                            if (context.label) {
-                                context.label.split(' ').forEach(word => {
-                                    if ((currentLine + word).length > maxLabelWidth) {
-                                        wrappedLabel += currentLine.trim() + '\n';
-                                        currentLine = '';
-                                    }
-                                    currentLine += word + ' ';
-                                });
-                            }
-                            wrappedLabel += currentLine.trim();
-                            return wrappedLabel ? [wrappedLabel, label] : label;
-                        }
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { position: 'bottom' },
+                        tooltip: { callbacks: { title: commonTooltipTitleCallback } }
                     }
                 }
-            },
-            scales: {
-                 x: {
-                    ticks: {
-                        callback: function(value, index, values) {
-                            const label = this.getLabelForValue(value);
-                            if (label.length > 10) { // Max length before trying to wrap
-                                return label.match(/.{1,10}/g); // Split into lines of 10 chars
-                            }
-                            return label;
-                        }
-                    }
+            });
+        }
+        
+        // Barrel Supplier Chart (Donut Chart)
+        const barrelSupplierCtx = document.getElementById('barrelSupplierChart')?.getContext('2d');
+        if (barrelSupplierCtx) {
+            new Chart(barrelSupplierCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: [wrapLabels('有明産業 (独立系)'), wrapLabels('大手自社製造'), wrapLabels('輸入販売'), wrapLabels('他業種新規参入')],
+                    datasets: [{
+                        label: '国内樽供給元',
+                        data: [20, 45, 20, 15], // Illustrative data based on report context
+                        backgroundColor: [chartColors.orange, chartColors.blue, chartColors.green, chartColors.gold],
+                        borderColor: '#F8F9FA',
+                        borderWidth: 2
+                    }]
                 },
-                y: {
-                    beginAtZero: true,
-                    ticks: {
-                         callback: function(value) {
-                            if (Number.isInteger(value)) {
-                                return value;
-                            }
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { position: 'bottom', labels: { boxWidth: 15 } },
+                        tooltip: { callbacks: { title: commonTooltipTitleCallback } }
+                    }
+                }
+            });
+        }
+
+        // Barrel Material Chart (Bar Chart)
+        const barrelMaterialCtx = document.getElementById('barrelMaterialChart')?.getContext('2d');
+        if (barrelMaterialCtx) {
+            new Chart(barrelMaterialCtx, {
+                type: 'bar',
+                data: {
+                    labels: [wrapLabels('ホワイトオーク'), wrapLabels('ミズナラ')],
+                    datasets: [
+                        {
+                            label: '価格高騰レベル',
+                            data: [70, 90], // Qualitative challenge level (0-100)
+                            backgroundColor: chartColors.orange,
                         },
-                        stepSize: 10
-                    }
-                }
-            }
-        });
-        
-        const pieDoughnutOptions = (titleText) => ({
-             responsive: true,
-            maintainAspectRatio: false,
-            plugins: {
-                legend: {
-                    position: 'bottom',
+                        {
+                            label: '供給不安定レベル',
+                            data: [60, 80],
+                            backgroundColor: chartColors.blue,
+                        },
+                        {
+                            label: '加工難易度レベル',
+                            data: [30, 85],
+                            backgroundColor: chartColors.steelBlue,
+                        }
+                    ]
                 },
-                title: {
-                    display: true,
-                    text: titleText,
-                    font: { size: 16 }
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    indexAxis: 'y',
+                    plugins: {
+                        legend: { position: 'bottom', labels: { boxWidth: 15 } },
+                        tooltip: { callbacks: { title: commonTooltipTitleCallback } }
+                    },
+                    scales: { x: { beginAtZero: true, max: 100, ticks: { stepSize: 20 } } }
+                }
+            });
+        }
+
+        // Cooper Affiliation Chart (Bar chart)
+        const cooperAffiliationCtx = document.getElementById('cooperAffiliationChart')?.getContext('2d');
+        if(cooperAffiliationCtx) {
+            new Chart(cooperAffiliationCtx, {
+                type: 'bar',
+                data: {
+                    labels: [wrapLabels('有明産業'), wrapLabels('ニッカ'), wrapLabels('薩摩酒造'), wrapLabels('その他/不明')],
+                    datasets: [{
+                        label: 'クーパー所属数（推定）',
+                        data: [19, 3, 2, 36], // Based on report: Total 50-70. Ariake 19, Nikka 3, Satsuma 2. Others = (avg 60) - 19 - 3 - 2 = 36
+                        backgroundColor: [chartColors.green, chartColors.gold, chartColors.steelBlue, chartColors.lightGray],
+                    }]
                 },
-                tooltip: {
-                    callbacks: {
-                        label: function(context) {
-                            let label = context.label || '';
-                            if (label) {
-                                label += ': ';
-                            }
-                            if (context.parsed !== null) {
-                                label += context.parsed;
-                                if (context.dataset.dataUnit) label += context.dataset.dataUnit;
-                            }
-                            const total = context.dataset.data.reduce((acc, val) => acc + val, 0);
-                            const percentage = (context.parsed / total * 100).toFixed(1) + '%';
-                            label += ` (${percentage})`;
-                            
-                            const maxLabelWidth = 16;
-                            let wrappedLabel = '';
-                            let currentLine = '';
-                            if (context.label) {
-                                context.label.split(' ').forEach(word => {
-                                    if ((currentLine + word).length > maxLabelWidth) {
-                                        wrappedLabel += currentLine.trim() + '\n';
-                                        currentLine = '';
-                                    }
-                                    currentLine += word + ' ';
-                                });
-                            }
-                            wrappedLabel += currentLine.trim();
-                            return wrappedLabel ? [wrappedLabel, label] : label;
-                        }
-                    }
-                }
-            }
-        });
-
-
-        new Chart(barrelMakerChartCtx, {
-            type: 'doughnut',
-            data: {
-                labels: ['独立系メーカー (有明産業)', '大手ウイスキーメーカー (自社製造)', '輸入販売', '他業種からの新規参入'],
-                datasets: [{
-                    label: '樽供給元',
-                    data: [1, 3, 1, 1], // 仮の比率データ。実際は企業数や供給量に基づくべきだがレポートに詳細なし。
-                    backgroundColor: ['#B08D57', '#D4A06A', '#E8C08A', '#F5E0B9'],
-                    borderColor: '#FDFBF6',
-                    borderWidth: 2,
-                    dataUnit: '社(カテゴリ)'
-                }]
-            },
-            options: pieDoughnutOptions('国内ウイスキー樽供給元の構成（イメージ）')
-        });
-
-        const barrelMakersData = [
-            { name: "有明産業株式会社", type: "独立系製造", note: "日本唯一の独立系洋樽メーカー。ミズナラ樽等も製造。シーバスリーガル向けミズナラ樽も手掛ける。" },
-            { name: "ニッカウヰスキー", type: "自社製造", note: "余市蒸溜所で樽を自社製造。伝統技術を継承。" },
-            { name: "若鶴酒造（三郎丸蒸留所）", type: "自社製造、再生事業", note: "富山県産ミズナラ「三四郎樽」開発。樽再生事業「Re:COOPERAGE」も展開。" },
-            { name: "株式会社日本樽産業 (JCI)", type: "輸入販売", note: "フランスDoreau社と提携し高品質樽を輸入。将来的な国内生産も視野。" },
-            { name: "日進木工", type: "製造", note: "家具メーカーから樽製造に参入。国産ナラ材使用。" }
-        ];
-
-        const barrelMakersInfoContainer = document.getElementById('barrelMakersInfo');
-        barrelMakersData.forEach(maker => {
-            const div = document.createElement('div');
-            div.className = 'bg-stone-50 p-3 rounded-md shadow border border-stone-200';
-            div.innerHTML = `<h4 class="font-semibold text-md text-[#B08D57]">${maker.name}</h4>
-                             <p class="text-sm"><span class="font-medium">形態：</span>${maker.type}</p>
-                             <p class="text-sm">${maker.note}</p>`;
-            barrelMakersInfoContainer.appendChild(div);
-        });
-
-
-        new Chart(cooperDistributionChartCtx, {
-            type: 'bar',
-            data: {
-                labels: ['国内総数(推定)', '有明産業', 'ニッカウヰスキー', '薩摩酒造'],
-                datasets: [{
-                    label: 'クーパー数',
-                    data: [60, 19, 3, 2], // 中央値の60名を採用。若鶴酒造は不明のため含めず。
-                    backgroundColor: ['#B08D57', '#D4A06A', '#E8C08A', '#F5E0B9'],
-                    borderColor: '#654321',
-                    borderWidth: 1
-                }]
-            },
-           options: commonChartOptions('国内クーパーの概数と主要企業所属状況（推定）')
-        });
-        
-        new Chart(ariakeProductionChartCtx, {
-            type: 'pie',
-            data: {
-                labels: ['焼酎メーカー向け', 'ウイスキーメーカー向け'],
-                datasets: [{
-                    label: '年間生産樽の内訳',
-                    data: [0.9 * 4500, 0.1 * 4500],
-                    backgroundColor: ['#B08D57', '#D4A06A'],
-                    borderColor: '#FDFBF6',
-                    borderWidth: 2,
-                    dataUnit: '丁'
-                }]
-            },
-            options: pieDoughnutOptions('有明産業 年間樽生産約4500丁の内訳')
-        });
-
-
-        const tabButtons = document.querySelectorAll('.tab-button');
-        const tabContents = document.querySelectorAll('.tab-content');
-
-        tabButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                tabButtons.forEach(btn => btn.classList.remove('active'));
-                button.classList.add('active');
-                const targetTab = button.dataset.tab;
-                tabContents.forEach(content => {
-                    if (content.id === `${targetTab}Content`) {
-                        content.classList.remove('hidden');
-                    } else {
-                        content.classList.add('hidden');
-                    }
-                });
-            });
-        });
-        
-        const accordionButtons = document.querySelectorAll('.accordion-button');
-        accordionButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                button.classList.toggle('open');
-                const arrow = button.querySelector('.arrow');
-                if (arrow) {
-                    arrow.classList.toggle('rotate-180');
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: { callbacks: { title: commonTooltipTitleCallback } }
+                    },
+                    scales: { y: { beginAtZero: true, ticks: { precision: 0 } } }
                 }
             });
-        });
-
-        const navButtons = document.querySelectorAll('.nav-button');
-        const contentSections = document.querySelectorAll('.content-section');
-
-        navButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                navButtons.forEach(btn => btn.classList.remove('active'));
-                button.classList.add('active');
-                const targetId = button.dataset.target;
-                
-                contentSections.forEach(section => {
-                    if (section.id === targetId) {
-                        section.classList.remove('hidden');
-                        // Scroll to section smoothly
-                        section.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    } else {
-                        section.classList.add('hidden');
-                    }
-                });
-            });
-        });
-        
-        // Activate the first nav button and show its content by default
-        if (navButtons.length > 0) {
-            navButtons[0].classList.add('active');
-            const firstTargetId = navButtons[0].dataset.target;
-            document.getElementById(firstTargetId)?.classList.remove('hidden');
         }
-
-
-        // Data for tables
-        const table1Data = [
-            { name: "有明産業株式会社", type: "独立系製造", material: "洋樽（ミズナラ、オーク、桜、栗、杉等）", production: "約4500丁（9割焼酎向け）", notes: "日本唯一の独立系。シーバスミズナラ樽製造。樽職人19名在籍。" },
-            { name: "ニッカウヰスキー", type: "自社製造", material: "オーク樽", production: "不明", notes: "余市蒸溜所で自社製樽技術確立。樽職人3名在籍。" },
-            { name: "若鶴酒造（三郎丸蒸留所）", type: "自社製造、再生事業", material: "ミズナラ（富山県産）、バーボン、シェリー、赤ワイン等", production: "不明", notes: "富山県産ミズナラ「三四郎樽」開発。Re:COOPERAGE事業（樽再生、職人育成）。" },
-            { name: "株式会社日本樽産業 (JCI)", type: "輸入販売、国内生産計画", material: "Doreau社製（ウイスキー・ワイン用）", production: "不明", notes: "フランスDoreau社と提携。輸入収益で国内生産目指す。" },
-            { name: "日進木工", type: "製造", material: "国産ナラ材", production: "不明", notes: "家具メーカーからの参入。飛騨高山蒸留所で使用。" }
-        ];
-
-        const table2Data = [
-            { type: "クォーター", capacity: "45～50", usage: "小型シェリー樽、追加熟成に多用" },
-            { type: "オクタブ", capacity: "45～68", usage: "小型シェリー樽、追加熟成に多用" },
-            { type: "バレル", capacity: "180～200", usage: "アメリカンホワイトオーク製が主流、バーボン熟成に多用、バニラやハチミツの風味" },
-            { type: "ホグスヘッド", capacity: "250", usage: "バーボン樽を組み替えたものが多い" },
-            { type: "バリック", capacity: "220～300", usage: "ワイン熟成樽、近年ウイスキー熟成にも使用" },
-            { type: "パンチョン", capacity: "300～500", usage: "シェリー酒貯蔵に使われる、丈が短くずんぐりした形" },
-            { type: "バット", capacity: "500", usage: "シェリー酒貯蔵に使われる大型樽、スコッチウイスキー熟成に再利用" },
-            { type: "パイプ", capacity: "410～650", usage: "ポートワイン熟成樽、ブレンデッドウイスキーの仕上げに使用" },
-            { type: "ドラム", capacity: "650", usage: "マディラワイン熟成樽、ウイスキーの二次熟成に使用" },
-            { type: "ゴルダ", capacity: "700", usage: "非常に大きな樽、主に輸送用、熟成用としては一般的ではない" }
-        ];
-        
-        const table3Data = [
-            { material: "ホワイトオーク", origin: "米国、欧州", features: "バニラ、ココナッツのような甘い香り。タンニン量少ない。耐水性高い。加工容易。", issues: "需要増で丸太入手難、価格高騰。気候変動による生育適域減少。" },
-            { material: "コモンオーク", origin: "欧州", features: "タンニン量多く香りが強い。", issues: "特定産地での供給変動リスク。" },
-            { material: "セシルオーク", origin: "欧州", features: "スパイシーな香り。タンニン量多い。", issues: "特定産地での供給変動リスク。" },
-            { material: "ミズナラ（ジャパニーズオーク）", origin: "日本（北海道、東北）", features: "白檀、伽羅のようなオリエンタルな香り。加工難しく水漏れしやすい。長期熟成向き。", issues: "希少性高く、価格高騰。良材枯渇、直径小型化。伐採・流通体制未整備、採算性問題。" },
-            { material: "その他国産材（栗、桜など）", origin: "日本", features: "栗：独特の風味。桜：桜餅のような香り。", issues: "流通量が少ない、品質安定性。" }
-        ];
-
-        const table4Data = [
-            { company: "有明産業株式会社", coopers: "19名", notes: "日本唯一の独立系洋樽メーカー。積極的な職人育成プログラムを推進。" },
-            { company: "ニッカウヰスキー（余市蒸溜所）", coopers: "3名", notes: "自社製樽技術を継承。" },
-            { company: "薩摩酒造", coopers: "2名（祝迫氏と弟子1名）", notes: "焼酎蔵で唯一の専属樽職人。技術継承に注力。" },
-            { company: "若鶴酒造（三郎丸蒸留所）", coopers: "不明（Re:COOPERAGE事業で育成を明記）", notes: "樽再生事業Re:COOPERAGEで樽職人育成を推進。" },
-            { company: "合計（推定）", coopers: "約50～70名", notes: "国内全体のクーパー数。" }
-        ];
-
-        function populateTable(tableId, data, columns) {
-            const table = document.getElementById(tableId);
-            const tbody = table.querySelector('tbody');
-            tbody.innerHTML = ''; // Clear existing rows
-
-            data.forEach(rowData => {
-                const tr = document.createElement('tr');
-                tr.className = 'border-b hover:bg-stone-50';
-                columns.forEach(column => {
-                    const td = document.createElement('td');
-                    td.className = 'p-3 text-sm';
-                    td.textContent = rowData[column.key];
-                    tr.appendChild(td);
-                });
-                tbody.appendChild(tr);
-            });
-        }
-        
-        let sortOrders = {};
-
-        function addSortableTable(tableId, initialData, columns) {
-            populateTable(tableId, initialData, columns);
-            const table = document.getElementById(tableId);
-            const headers = table.querySelectorAll('thead th[data-sort]');
-
-            headers.forEach(header => {
-                const sortKey = header.dataset.sort;
-                sortOrders[tableId + sortKey] = 'asc'; // Initialize sort order
-
-                header.addEventListener('click', () => {
-                    const currentSortOrder = sortOrders[tableId + sortKey];
-                    const isAsc = currentSortOrder === 'asc';
-                    
-                    initialData.sort((a, b) => {
-                        let valA = a[sortKey];
-                        let valB = b[sortKey];
-
-                        // Handle numeric sorting for capacity and coopers
-                        if (sortKey === 'capacity') { // For table2
-                            // Extract min value for sorting, e.g., "45-50" -> 45
-                            valA = parseFloat(String(valA).split('～')[0]);
-                            valB = parseFloat(String(valB).split('～')[0]);
-                        } else if (sortKey === 'coopers' && tableId === 'table4') { // For table4
-                             // "19名" -> 19, "約50～70名" -> 50 (use min for range)
-                            if (String(valA).includes('約')) valA = parseFloat(String(valA).match(/(\d+)/)[0]);
-                            else valA = parseFloat(String(valA));
-                            if (String(valB).includes('約')) valB = parseFloat(String(valB).match(/(\d+)/)[0]);
-                            else valB = parseFloat(String(valB));
-                        } else if (sortKey === 'production' && tableId === 'table1') { // For table1
-                            if (String(valA).includes('約')) valA = parseFloat(String(valA).match(/(\d+)/)[0]);
-                            else if (valA === '不明') valA = -1; // Treat '不明' as smallest
-                            else valA = parseFloat(String(valA));
-
-                            if (String(valB).includes('約')) valB = parseFloat(String(valB).match(/(\d+)/)[0]);
-                             else if (valB === '不明') valB = -1;
-                            else valB = parseFloat(String(valB));
-                        }
-
-
-                        if (typeof valA === 'string' && typeof valB === 'string') {
-                            return isAsc ? valA.localeCompare(valB, 'ja') : valB.localeCompare(valA, 'ja');
-                        } else {
-                            return isAsc ? valA - valB : valB - valA;
-                        }
-                    });
-                    
-                    populateTable(tableId, initialData, columns);
-                    sortOrders[tableId + sortKey] = isAsc ? 'desc' : 'asc';
-
-                    // Update sort indicators (optional)
-                    headers.forEach(h => h.classList.remove('sorted-asc', 'sorted-desc'));
-                    header.classList.add(isAsc ? 'sorted-desc' : 'sorted-asc'); // Class indicates next sort order
-                });
-            });
-        }
-
-        addSortableTable('table1', table1Data, [
-            { key: 'name', label: '企業名' }, { key: 'type', label: '事業形態' }, { key: 'material', label: '主な樽の種類/材' }, { key: 'production', label: '年間生産数（判明分）' }, { key: 'notes', label: '特記事項' }
-        ]);
-        addSortableTable('table2', table2Data, [
-            { key: 'type', label: '種類' }, { key: 'capacity', label: '容量（リットル）' }, { key: 'usage', label: '主な用途/特徴' }
-        ]);
-        addSortableTable('table3', table3Data, [
-            { key: 'material', label: '樽材の種類' }, { key: 'origin', label: '主な産地' }, { key: 'features', label: '特徴' }, { key: 'issues', label: '調達・供給に関する課題' }
-        ]);
-        addSortableTable('table4', table4Data, [
-            { key: 'company', label: '企業/組織名' }, { key: 'coopers', label: '所属クーパー数（判明分）' }, { key: 'notes', label: '特記事項' }
-        ]);
 
     </script>
 </body>
